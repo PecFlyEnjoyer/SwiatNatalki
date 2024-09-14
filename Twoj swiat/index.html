@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&family=Sofadi+One&display=swap" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Mmmm hey</title>
+    <link href="style.css" rel="stylesheet">
+
+</head>
+<body>
+<main>
+    <div class="login-container">
+        <h2>Magiczne słowo</h2>
+        <form id="loginForm">
+            <div style="margin-top: 50px; margin-bottom: 20px;">
+                <input type="password" id="password" placeholder="No dawaj" required></div>
+            <button type="submit">Tak myslisz?</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+   <!--<button id="resetButton">Resetuj próby</button> -->
+
+ <script>
+    // Funkcja do aktualizacji liczby nieudanych prób
+    function updateFailedAttempts() {
+        let today = new Date().toLocaleDateString(); // Pobierz dzisiejszą datę w formacie "DD/MM/YYYY"
+        let storedDate = localStorage.getItem('storedDate');
+        
+        // Sprawdź, czy zapisany jest dzień i zresetuj licznik, jeśli data się zmieniła
+        if (storedDate !== today) {
+            localStorage.setItem('storedDate', today);
+            localStorage.setItem('failedAttempts', 0);
+        }
+
+        let attempts = localStorage.getItem('failedAttempts');
+        attempts = attempts ? parseInt(attempts) : 0;
+
+        if (attempts < 5) {
+            attempts++;
+            localStorage.setItem('failedAttempts', attempts);
+        }
+
+        return attempts;
+    }
+
+    // Funkcja do pobrania liczby nieudanych prób
+    function getFailedAttempts() {
+        let attempts = localStorage.getItem('failedAttempts');
+        return attempts ? parseInt(attempts) : 0;
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Zatrzymuje domyślne działanie formularza
+
+        var password = document.getElementById('password').value;
+        var message = document.getElementById('message');
+
+        let attempts = getFailedAttempts();
+
+        if (attempts >= 5) {
+            // Blokada po 5 nieudanych próbach
+            message.textContent = "Sorry kotku sprobuj jutro <3";
+            message.style.color = 'black';
+            return;
+        }
+
+        if (password === '123') {
+            // Przekierowanie na nową stronę
+            window.location.href = 'main/fake.html'; // Zamień na URL docelowej strony
+        } else {
+            // Zaktualizuj liczbę nieudanych prób i wyświetl komunikat
+            attempts = updateFailedAttempts();
+            if (attempts < 5) {
+                message.textContent = `Cos ci nie idzie : ${attempts}`;
+                message.style.color = 'black';
+            } else {
+                message.textContent = "Sorry kotku sprobuj jutro <3";
+                message.style.color = 'black';
+            }
+        }
+    });
+      // Funkcja do resetowania liczby prób i daty
+      function resetAttempts() {
+        localStorage.removeItem('failedAttempts');
+        localStorage.removeItem('storedDate');
+        document.getElementById('message').textContent = "RESET";
+    }
+
+    // Event listener dla przycisku reset
+    document.getElementById('resetButton').addEventListener('click', function() {
+        resetAttempts();
+    });
+</script>
+
+</body>
+</html>
