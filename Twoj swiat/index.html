@@ -25,7 +25,7 @@
         <p id="message"></p>
     </div>
 
-   <!--<button id="resetButton">Resetuj próby</button> -->
+   !--<button id="resetButton">Resetuj próby</button> -->
 
  <script>
     // Funkcja do aktualizacji liczby nieudanych prób
@@ -57,35 +57,38 @@
     }
 
     document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Zatrzymuje domyślne działanie formularza
+    event.preventDefault(); // Zatrzymuje domyślne działanie formularza
 
-        var password = document.getElementById('password').value;
-        var message = document.getElementById('message');
+    var password = document.getElementById('password').value;
+    var message = document.getElementById('message');
 
-        let attempts = getFailedAttempts();
+    let attempts = getFailedAttempts();
 
-        if (attempts >= 5) {
-            // Blokada po 5 nieudanych próbach
+    if (attempts >= 5) {
+        // Blokada po 5 nieudanych próbach
+        message.textContent = "Sorry kotku sprobuj jutro <3";
+        message.style.color = 'black';
+        return;
+    }
+
+    if (password === 'Jak bije to kocha') {
+        // Przekierowanie na nową stronę
+        window.location.href = 'main/fake.html'; // Zamień na URL docelowej strony
+    } else {
+        // Zaktualizuj liczbę nieudanych prób i wyświetl komunikat
+        attempts = updateFailedAttempts();
+        document.getElementById('password').value = ""; // Usuwa błędne hasło po każdej nieudanej próbie
+
+        if (attempts < 5) {
+            message.textContent = `Cos ci nie idzie : ${attempts}`;
+            message.style.color = 'black';
+        } else {
             message.textContent = "Sorry kotku sprobuj jutro <3";
             message.style.color = 'black';
-            return;
         }
+    }
+});
 
-        if (password === 'Ja ciebie też') {
-            // Przekierowanie na nową stronę
-            window.location.href = 'main/fake.html'; // Zamień na URL docelowej strony
-        } else {
-            // Zaktualizuj liczbę nieudanych prób i wyświetl komunikat
-            attempts = updateFailedAttempts();
-            if (attempts < 5) {
-                message.textContent = `Cos ci nie idzie : ${attempts}`;
-                message.style.color = 'black';
-            } else {
-                message.textContent = "Sorry kotku sprobuj jutro <3";
-                message.style.color = 'black';
-            }
-        }
-    });
       // Funkcja do resetowania liczby prób i daty
       function resetAttempts() {
         localStorage.removeItem('failedAttempts');
