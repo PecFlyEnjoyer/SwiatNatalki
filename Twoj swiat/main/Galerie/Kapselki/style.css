@@ -1,0 +1,53 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(168, 199, 154);
+    margin: 0;
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+    user-select: none;
+}
+
+.logo {
+    color: rgb(255, 255, 255);
+    font-size: 400px;
+    width: 1900px;
+    font-family: "Copperplate";
+    margin-left: 30px;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+.image-track {
+    display: flex;
+    gap: 5vmin;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0%, -50%);
+    
+}
+
+.image-track .image {
+    width: 35vmin;  
+    height: 35vmin; 
+    object-fit: cover;
+    object-position: center;
+    border-radius: 200px;
+    
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    color: rgb(134, 134, 134);
+}
+.image{
+    margin-top: 3.5vmin;
+}
