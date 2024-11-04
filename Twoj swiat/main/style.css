@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+html{
+    font-size: 80%;
+}
+
+
+body{
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-family: "Cherry Bomb One", system-ui;
+    user-select: none;
+}
+
+header{
+    margin-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 9%;
+    background-color: transparent;
+    filter: drop-shadow(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.faded-edges {
+    width: 300px; /* Dostosuj szerokość w zależności od potrzeb */
+    height: auto;
+    -webkit-mask-image: radial-gradient(ellipse, black 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse, black 60%, transparent 70%);
+}
+
+
+
+.logo{
+    font-size: 7rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+    color: linear-gradient(45deg,#70c1ff,skyblue,#c5dff5);
+    text-decoration: none;
+}
+
+.logo:hover{
+    transform: scale(1.1);
+}
+
+nav a{
+    font-size: 1.8rem;
+    color: white;
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a.active{
+    color: cornflowerblue;
+    border-bottom: 3px solid cornflowerblue;
+}
+
+@media(max-width:995px){
+    nav{
+        position: absolute;
+        display: none;
+        top: 0;
+        right: 0;
+        width: 40%;
+        border-left: 3px solid cornflowerblue;
+        border-bottom: 3px solid cornflowerblue;
+        border-bottom-left-radius: 2rem;
+        padding: 1rem solid;
+        background-color: #161616;
+        border-top: 0.1rem solid rgba(0,0,0,0.1);
+    }
+
+    nav.active{
+        display: block;
+    }
+
+    nav a{
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+    }
+
+    nav a:hover,
+    nav a.active{
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border-bottom: 0.5rem solid cornflowerblue;
+    }
+}
+
+section{
+    min-height: 100vh;
+    padding: 5rem 9% 5rem;
+}
+
+.home{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    gap: 6rem;
+    padding-top: 150px;
+    background: linear-gradient(45deg,#70c1ff,skyblue,#c5dff5);
+    background-size: 300% 300%;
+    animation: color 5s ease-in-out infinite;
+}
+@keyframes color {
+    0%{
+        background-position: 0 50% ;
+    }
+    50%{
+        background-position: 100% 50% ;
+    }
+    100%{
+        background-position: 0 50% ;
+    }
+}
+h1{
+    margin-bottom: 40px;
+}
+
+.home .home-content h1{
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+span{
+    color: cornflowerblue;
+}
+
+.home-content h3{
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.home-content p{
+    font-size: 1.6rem;
+}
+
+.home-img{
+    border-radius: 50%;
+}
+
+.home-img img{
+    position: relative;
+    width: 32vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px solid cornflowerblue;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.home-img img:hover{
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.social-icons a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent;
+    border: 0.2rem solid cornflowerblue;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin: 3rem 1.5rem 3rem 0;
+    transition: 0.3s ease;
+    color: cornflowerblue;
+}
+
+.social-icons a:hover{
+    color: black;
+    transform: scale(1.3) translateY(-5px);
+    background-color: cornflowerblue;
+    box-shadow: 0  0 25px cornflowerblue;
+}
+
+.btn{
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background-color: rgb(48, 80, 139);
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: cornflowerblue;
+    letter-spacing: 0.3rem;
+    font-weight: 600;
+    border: 2px solid cornflowerblue;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover{
+    transform: scale3d(1.03);
+    background-color: cornflowerblue;
+    color: black;
+    box-shadow: 0 0 25px cornflowerblue;
+}
+
+.typing-text{
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+    text-align: start;
+}
+
+.typing-text span{
+    position: relative;
+}
+
+.typing-text span::before{
+    content: "software Developer";
+    color: cornflowerblue;
+    animation: words 20s infinite;
+}
+
+.typing-text span::after{
+    content: "";
+    background-color: skyblue;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    border-left: 3px solid skyblue;
+    right: -8;
+    animation: cursor 0.6s infinite;
+}
+
+@keyframes cursor{
+    to{
+        border-left: 3px solid cornflowerblue;
+    }
+}
+
+@keyframes words{
+    0%, 20%{
+        content: "Przesłodka";
+    }
+    21%, 40%{
+        content: "Śliczna";
+    }
+    41%, 60%{
+        content: "Piękna";
+    }
+    61%, 80%{
+        content: "Urocza";
+    }
+    81%, 100%{
+        content: "Kochana";
+    }
+}
+
+@media (max-width: 1000px){
+    .home{
+        gap: 4rem;
+    }
+}
+
+@media(max-width:995px){
+    .home{
+        flex-direction: column;
+        margin: 5rem 4rem;
+    }
+
+    .home .home-content h3{
+        font-size: 2.5rem;
+    }
+
+    .home-content h1{
+        font-size: 5rem;
+    }
+
+    .home-img img{
+        width: 70vw;
+        margin-top: 4rem;
+
+    }
+}
+
+.blur-border {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px; /* Zaokrąglenie krawędzi */
+}
+
+.blur-border::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.5), transparent 70%);
+    filter: blur(15px);
+    z-index: 1;
+}
+
+.blur-border img {
+    position: relative;
+    z-index: 2;
+    display: block;
+}
+
+
+.container{
+    background-color: #e7e7e7;
+    height: 600px;
+    width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+    padding: 20px 20px;
+}
+
+.container:hover{
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.player-img{
+    width: 300px;
+    height: 300px;
+    position: static;
+    top: -50px;
+    left: 50px;
+}
+
+.player-img img{
+    object-fit: cover;
+    border-radius: 20px;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5);
+}
+
+.player-img:hover img{
+    box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.8);
+}
+
+.player-img img.active{
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+    opacity: 1;
+}
+
+h2{
+    font-size: 25px;
+    text-align: center;
+    font-weight: 500;
+    margin: 10px 0 0;
+    color: cornflowerblue;
+}
+
+h3{
+    font-size: 18px;
+    text-align: center;
+    font-weight: 500;
+    margin: 10px 0 0;
+    color: cornflowerblue;
+}
+
+.player-progress{
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 40px 20px 35px;
+    height: 6px;
+    width: 90%;
+}
+
+.progress{
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.music-duration{
+    position: relative;
+    top: -25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-controls{
+    position: relative;
+    top: -15px;
+    left: 80px;
+    width: 200px;
+}
+
+.fa-solid{
+    font-size: 30px;
+    color: cornflowerblue;
+    margin-right: 30px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+.fa-solid:hover{
+    filter: brightness(40%);
+}
+
+.play-button{
+    font-size: 44px;
+    position: relative;
+    top: 3px;
+}
