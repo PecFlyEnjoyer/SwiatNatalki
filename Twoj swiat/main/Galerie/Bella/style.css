@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap; /* Elastyczne zawijanie wierszy */
+    gap: 10px; /* Odstępy między kafelkami */
+    justify-content: center; /* Wyśrodkowanie kafelków */
+}
+
+.gallery-item {
+    flex: 1 1 calc(25% - 10px); /* Każdy kafelek zajmuje 25% szerokości z odstępem */
+    max-width: calc(25% - 10px); /* Maksymalna szerokość kafelka */
+    margin-bottom: 10px; /* Odstęp między rzędami */
+    position: relative; /* Aby zdjęcia były łatwe do kontrolowania */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto; /* Dopasowanie wysokości */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsywność - dla mniejszych ekranów */
+@media (max-width: 1200px) {
+    .gallery-item {
+        flex: 1 1 calc(33.33% - 10px); /* 3 kolumny na średnich ekranach */
+        max-width: calc(33.33% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-item {
+        flex: 1 1 calc(50% - 10px); /* 2 kolumny na małych ekranach */
+        max-width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item {
+        flex: 1 1 100%; /* 1 kolumna na bardzo małych ekranach */
+        max-width: 100%;
+    }
+}
